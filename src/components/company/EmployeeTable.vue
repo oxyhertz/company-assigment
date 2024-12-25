@@ -3,6 +3,12 @@
         <div class="header">
             <h2>Employees</h2>
             <button @click="openEditEmployeeModal">Add Employee</button>
+            <select v-model="filterBy.departmentId">
+                <option value="">Select Department</option>
+                <option v-for="department in departmentsOptionsToDisplay" :key="department._id" :value="department._id">
+                    {{ department.name }}
+                </option>
+            </select>
         </div>
         <div class="row header-row">
             <div class="cell" v-for="header in headers" :key="header.text">
@@ -19,13 +25,17 @@
 
 <script lang="ts">
 import { Employee, EmployeeToSave } from '@/types/company/employee';
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import EmployeePreview from '@/components/company/EmployeePreview.vue';
 import Modal from '../base/Modal.vue';
 import EmployeeEdit from './EmployeeEdit.vue';
+import { Department } from '@/types/company/department';
 export default defineComponent({
     name: 'Employee Table',
     emits: ['remove-employee', 'add-employee'],
+    props: {
+        departmentsOptionsToDisplay: Array as PropType<Department[]>,
+    },
     data() {
         return {
             isAddEmployeeModalOpen: false,
@@ -35,7 +45,13 @@ export default defineComponent({
                 { text: 'Department' },
                 { text: 'Actions' },
             ],
+            filterBy: {
+                departmentId: '',
+            },
         }
+    },
+    created() {
+        console.log('departmentsOptionsToDisplay', this.departmentsOptionsToDisplay);
     },
     methods: {
         removeEmployee(employeeId: string) {
@@ -55,7 +71,14 @@ export default defineComponent({
     computed: {
         employees(): Employee[] {
             return this.$store.getters.currentCompany?.employees || [];
+        },
+        employeesToDisplay(): Employee[] {
+            return this.employees.filter(employee => {
+                if (!this.filterBy.departmentId) return true;
+                return employee.depId === this.filterBy.departmentId;
+            });
         }
+
     },
     components: {
         EmployeePreview,

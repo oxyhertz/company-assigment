@@ -5,8 +5,9 @@
             <div class="company-details">
                 <h1>{{ company?.name }}</h1>
             </div>
-            <router-view @add-employee="onAddEmployee" @remove-employee="onRemoveEmployee"
-                @add-department="onAddDepartment" @remove-department="openRemoveDepartmentModal" />
+            <router-view :departmentsOptionsToDisplay="departmentsOptionsToDisplay" @add-employee="onAddEmployee"
+                @remove-employee="onRemoveEmployee" @add-department="onAddDepartment"
+                @remove-department="openRemoveDepartmentModal" />
         </div>
         <div v-else>
             <h2>Loading...</h2>
