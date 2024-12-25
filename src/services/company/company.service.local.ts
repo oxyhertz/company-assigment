@@ -1,9 +1,11 @@
+import { Department, DepartmentToSave } from "@/types/company/department";
 import { storageService } from "../async-storage.service";
 import {
   Company,
   CompanyToSave,
   CompanySummary,
 } from "@/types/company/company";
+import { EmployeeToSave } from "@/types/company/employee";
 
 const STORAGE_KEY = "company";
 
@@ -12,12 +14,16 @@ export const companyService = {
   getById,
   save,
   remove,
+  getEmptyDepartment,
+  getEmptyEmployee,
 };
 
 async function query(): Promise<CompanySummary[]> {
   let companies: Company[] = await storageService.query<Company>(STORAGE_KEY);
+  console.log("🚀 ~ query ~ companies:", companies);
   if (!companies.length) {
     companies = await generateDemoCompanyData();
+    console.log("🚀 ~ query ~ companies:", companies);
   }
   //return light version of companies
   return companies.map((company) => ({ _id: company._id, name: company.name }));
@@ -42,6 +48,22 @@ async function save(company: Company): Promise<Company> {
     };
     return await storageService.post<Company>(STORAGE_KEY, companyToSave);
   }
+}
+
+function getEmptyDepartment(): DepartmentToSave {
+  return {
+    name: "",
+    description: "",
+  };
+}
+
+function getEmptyEmployee(): EmployeeToSave {
+  return {
+    name: "",
+    role: "",
+    depId: "",
+    joinedAt: Date.now(),
+  };
 }
 
 async function generateDemoCompanyData() {
@@ -144,11 +166,7 @@ async function generateDemoCompanyData() {
     },
   ];
 
-  await Promise.all(
-    initialCompanies.map((company) =>
-      storageService.post<Company>(STORAGE_KEY, company)
-    )
-  );
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(initialCompanies));
 
   return initialCompanies;
 }
