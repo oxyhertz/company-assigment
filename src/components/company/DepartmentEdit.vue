@@ -7,7 +7,7 @@
                     <input :type="field.type" v-model.trim="departmentToEdit[field.key]" />
                 </label>
             </div>
-            <button :disabled="isSaveDisabled" @click="saveCar">Save</button>
+            <button :disabled="isSaveDisabled" @click="saveDepartment">Save</button>
         </form>
     </section>
 </template>
@@ -28,7 +28,7 @@ export default defineComponent({
         }
     },
     methods: {
-        saveCar() {
+        saveDepartment() {
             this.$emit('save', this.departmentToEdit)
         },
     },

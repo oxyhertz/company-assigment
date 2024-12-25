@@ -1,5 +1,5 @@
 <template>
-    <div class="row department-preview">
+    <div class="row table-preview">
         <div class="cell">{{ department.name }}</div>
         <div class="cell">{{ department.description }}</div>
         <div class="cell">
