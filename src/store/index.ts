@@ -1,9 +1,14 @@
 import { createStore } from "vuex";
-
-export interface RootState {}
+import { companyStore } from "@/store/modules/company.store";
+import type { CompanyState } from "@/store/modules/company.store";
+export interface RootState {
+  company: CompanyState;
+}
 
 export const store = createStore<RootState>({
-  modules: {},
+  modules: {
+    company: companyStore,
+  },
 });
 
 export default store;
