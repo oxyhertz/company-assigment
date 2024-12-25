@@ -15,7 +15,7 @@
                 <span>{{ header.text }}</span>
             </div>
         </div>
-        <EmployeePreview v-for="employee in employees" :key="employee._id" :employee="employee"
+        <EmployeePreview v-for="employee in employeesToDisplay" :key="employee._id" :employee="employee"
             @remove-employee="removeEmployee" />
         <Modal :isOpen="isAddEmployeeModalOpen" @close="closeAddEmployeeModal">
             <EmployeeEdit @save="addEmployee" @cancel="closeAddEmployeeModal" />
@@ -50,9 +50,7 @@ export default defineComponent({
             },
         }
     },
-    created() {
-        console.log('departmentsOptionsToDisplay', this.departmentsOptionsToDisplay);
-    },
+
     methods: {
         removeEmployee(employeeId: string) {
             this.$emit('remove-employee', employeeId);
