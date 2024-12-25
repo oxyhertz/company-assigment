@@ -10,10 +10,17 @@
 @import 'basics/base';
 @import 'basics/forms';
 
+@import 'basics/app';
+//App defualt
+
 // pages
 @import 'pages/Home';
+@import 'pages/CompanyIndex';
 
 // Components
 @import 'cmps/main/AppHeader';
 @import 'cmps/base/Modal.scss';
 @import 'cmps/base/Notification';
+
+//Company cmps
+@import 'cmps/company/CompanyNavbar';
