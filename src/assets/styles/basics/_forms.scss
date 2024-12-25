@@ -1,0 +1,82 @@
+button {
+  border: 0;
+  background-color: $primary-btn-color;
+  color: $primary-btn-text-color;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.235s;
+  padding: 10px 24px;
+  &:hover {
+    background-color: darken($primary-btn-color, 5%);
+  }
+}
+
+input[type='text'],
+input[type='number'],
+select {
+  display: inline-block;
+  width: 100%;
+  max-width: 100%; /* Let the container control sizing */
+  padding: 0.6rem 1rem;
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: none;
+}
+
+input[type='text']:focus,
+input[type='number']:focus,
+select:focus {
+  border-color: #666;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+[data-title] {
+  position: relative;
+}
+
+[data-title]::before,
+[data-title]::after {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+[data-title]:hover::before {
+  content: attr(data-title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 14px;
+  font-family: sans-serif;
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+}
+
+.btn-link {
+  border: 0;
+  background-color: transparent;
+  // text-decoration: underline;
+  transition: 0.5s;
+}
+.btn-link:hover {
+  background-color: $clr1;
+}
