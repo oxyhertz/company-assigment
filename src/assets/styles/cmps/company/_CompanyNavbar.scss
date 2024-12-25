@@ -1,4 +1,16 @@
 .company-navbar {
   border-inline-end: 1px solid $app-header-border-color;
   width: 111px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 30px;
+  a {
+    background-color: $app-header-border-color;
+    border-radius: 14px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
