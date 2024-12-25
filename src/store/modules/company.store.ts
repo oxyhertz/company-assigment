@@ -39,9 +39,10 @@ export const companyStore: Module<CompanyState, RootState> = {
         throw err;
       }
     },
-    async loadCompany({ commit }, { companyId: string }) {
+    async loadCompany({ commit }, { companyId }: { companyId: string }) {
       try {
         const company: Company = await companyService.getById(companyId);
+        console.log("🚀 ~ loadCompany ~ company:", company);
         commit("setCurrentCompany", { company: company || null });
       } catch (err) {
         console.log("companyStore: Error in loadCompanyById", err);
