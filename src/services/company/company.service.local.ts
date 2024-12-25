@@ -17,7 +17,7 @@ export const companyService = {
 async function query(): Promise<CompanySummary[]> {
   let companies: Company[] = await storageService.query<Company>(STORAGE_KEY);
   if (!companies.length) {
-    await generateDemoCompanyData();
+    companies = await generateDemoCompanyData();
   }
   //return light version of companies
   return companies.map((company) => ({ _id: company._id, name: company.name }));

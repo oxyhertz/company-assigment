@@ -9,7 +9,6 @@ export interface CompanyState {
 }
 
 export const companyStore: Module<CompanyState, RootState> = {
-  namespaced: true,
   state: {
     companies: [],
     currentCompany: null,
@@ -34,7 +33,7 @@ export const companyStore: Module<CompanyState, RootState> = {
     async loadCompanies({ commit }) {
       try {
         const companies: CompanySummary[] = await companyService.query();
-        commit("setCompanyPreviews", { companies });
+        commit("setCompanies", { companies });
       } catch (err) {
         console.log("companyStore: Error in loadCompanyPreviews", err);
         throw err;

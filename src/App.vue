@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent } from 'vue';
 import AppHeader from './components/main/AppHeader.vue';
 import Notification from './components/base/Notification.vue';
 export default defineComponent({
@@ -15,8 +15,14 @@ export default defineComponent({
   components: {
     AppHeader,
     Notification
+  },
+  created() {
+    this.loadCompanies();
+  },
+  methods: {
+    loadCompanies() {
+      this.$store.dispatch('loadCompanies');
+    }
   }
 });
 </script>
-
-<style scoped></style>
