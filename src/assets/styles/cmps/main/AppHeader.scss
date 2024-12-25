@@ -1,4 +1,25 @@
 .app-header {
   display: flex;
   align-items: center;
+  min-height: 5rem;
+  background-color: $app-header-color;
+  padding-inline: 2rem;
+  border-bottom: 1px solid $app-header-border-color;
+
+  .main-logo {
+    margin-inline-end: 1rem;
+  }
+
+  .header-link {
+    padding: 1.75rem;
+    background-color: transparent;
+    color: $app-header-link-text-color;
+    transition: all 0.3s;
+    text-decoration: none;
+    &:hover,
+    &.router-link-exact-active {
+      color: darken($app-header-link-text-color, 10%);
+      background-color: $app-header-link-hover-bg-color;
+    }
+  }
 }
