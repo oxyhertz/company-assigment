@@ -4,6 +4,9 @@
 
   .company-details-container {
     flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     .company-details {
       h1 {
         text-align: center;
