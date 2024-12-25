@@ -1,9 +1,9 @@
 <template>
-  <div class="app">
+  <main class="app-wrapper">
     <AppHeader />
     <Notification />
     <router-view />
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
