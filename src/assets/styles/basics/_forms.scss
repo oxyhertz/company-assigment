@@ -80,3 +80,18 @@ button[disabled] {
 .btn-link:hover {
   background-color: $clr1;
 }
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  button {
+    padding-block: 1rem;
+  }
+
+  .required-txt {
+    color: lightcoral;
+    font-size: rem(12px);
+    margin-inline-start: 10px;
+  }
+}
