@@ -1,16 +1,17 @@
 <template>
     <main class="home">
-        <h1>Welcome To My home</h1>
+        <div class="hero">
+            <h1 class="hero-title">Elevate Your Company Management Today!</h1>
+            <img
+                src="https://img.freepik.com/free-vector/company-concept-illustration_114360-2581.jpg?semt=ais_hybrid" />
+        </div>
     </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { showSuccessMsg } from "@/services/event-bus.service";
 export default defineComponent({
     name: "Home",
-    mounted() {
-        showSuccessMsg("Welcome to my home");
-    },
+
 });
 </script>
